@@ -8,24 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		6B0B3C151EDCEA6100033E8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C141EDCEA6100033E8C /* main.m */; };
-		6B0B3C181EDCEA6100033E8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C171EDCEA6100033E8C /* AppDelegate.m */; };
-		6B0B3C1B1EDCEA6100033E8C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C1A1EDCEA6100033E8C /* ViewController.m */; };
+		6B0B3C181EDCEA6100033E8C /* JWCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C171EDCEA6100033E8C /* JWCAppDelegate.m */; };
+		6B0B3C1B1EDCEA6100033E8C /* JWCPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C1A1EDCEA6100033E8C /* JWCPlaylistViewController.m */; };
 		6B0B3C1E1EDCEA6100033E8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B3C1C1EDCEA6100033E8C /* Main.storyboard */; };
 		6B0B3C201EDCEA6100033E8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */; };
 		6B0B3C231EDCEA6100033E8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B3C211EDCEA6100033E8C /* LaunchScreen.storyboard */; };
+		6B0B3C2C1EDCEC1900033E8C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0B3C2B1EDCEC1900033E8C /* SystemConfiguration.framework */; };
+		6B0B3C301EDCEC9700033E8C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0B3C2D1EDCEC9700033E8C /* SpotifyAudioPlayback.framework */; };
+		6B0B3C311EDCEC9700033E8C /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0B3C2E1EDCEC9700033E8C /* SpotifyAuthentication.framework */; };
+		6B0B3C321EDCEC9700033E8C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0B3C2F1EDCEC9700033E8C /* SpotifyMetadata.framework */; };
+		6B0B3C351EDCF7DB00033E8C /* JWCSongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C341EDCF7DB00033E8C /* JWCSongListViewController.m */; };
+		6B1C59E01EDE972100A5D90C /* JWCTabLinkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C59DF1EDE972100A5D90C /* JWCTabLinkListViewController.m */; };
+		6B32E8E61EDDF708005AD485 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32E8E11EDDF708005AD485 /* TFHpple.m */; };
+		6B32E8E71EDDF708005AD485 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32E8E31EDDF708005AD485 /* TFHppleElement.m */; };
+		6B32E8E81EDDF708005AD485 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32E8E51EDDF708005AD485 /* XPathQuery.m */; };
+		6B32E8EA1EDDF73F005AD485 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B32E8E91EDDF73F005AD485 /* libxml2.tbd */; };
+		6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */; };
+		6B93245C1F50FF1A00B7BDC7 /* JWCAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B0B3C101EDCEA6100033E8C /* Spotify Tab Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotify Tab Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0B3C141EDCEA6100033E8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6B0B3C161EDCEA6100033E8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6B0B3C171EDCEA6100033E8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6B0B3C191EDCEA6100033E8C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6B0B3C1A1EDCEA6100033E8C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6B0B3C161EDCEA6100033E8C /* JWCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCAppDelegate.h; sourceTree = "<group>"; };
+		6B0B3C171EDCEA6100033E8C /* JWCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWCAppDelegate.m; sourceTree = "<group>"; };
+		6B0B3C191EDCEA6100033E8C /* JWCPlaylistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCPlaylistViewController.h; sourceTree = "<group>"; };
+		6B0B3C1A1EDCEA6100033E8C /* JWCPlaylistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWCPlaylistViewController.m; sourceTree = "<group>"; };
 		6B0B3C1D1EDCEA6100033E8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0B3C221EDCEA6100033E8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0B3C241EDCEA6100033E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B0B3C2B1EDCEC1900033E8C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6B0B3C2D1EDCEC9700033E8C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		6B0B3C2E1EDCEC9700033E8C /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		6B0B3C2F1EDCEC9700033E8C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		6B0B3C331EDCF7DB00033E8C /* JWCSongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCSongListViewController.h; sourceTree = "<group>"; };
+		6B0B3C341EDCF7DB00033E8C /* JWCSongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCSongListViewController.m; sourceTree = "<group>"; };
+		6B1C59DE1EDE972100A5D90C /* JWCTabLinkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCTabLinkListViewController.h; sourceTree = "<group>"; };
+		6B1C59DF1EDE972100A5D90C /* JWCTabLinkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCTabLinkListViewController.m; sourceTree = "<group>"; };
+		6B32E8E01EDDF708005AD485 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		6B32E8E11EDDF708005AD485 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		6B32E8E21EDDF708005AD485 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		6B32E8E31EDDF708005AD485 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		6B32E8E41EDDF708005AD485 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		6B32E8E51EDDF708005AD485 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		6B32E8E91EDDF73F005AD485 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		6B9324561F50FC0300B7BDC7 /* JWCSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCSongsViewController.h; sourceTree = "<group>"; };
+		6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCSongsViewController.m; sourceTree = "<group>"; };
+		6B93245A1F50FF1A00B7BDC7 /* JWCAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCAuthManager.h; sourceTree = "<group>"; };
+		6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCAuthManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B32E8EA1EDDF73F005AD485 /* libxml2.tbd in Frameworks */,
+				6B0B3C321EDCEC9700033E8C /* SpotifyMetadata.framework in Frameworks */,
+				6B0B3C2C1EDCEC1900033E8C /* SystemConfiguration.framework in Frameworks */,
+				6B0B3C311EDCEC9700033E8C /* SpotifyAuthentication.framework in Frameworks */,
+				6B0B3C301EDCEC9700033E8C /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +80,7 @@
 			children = (
 				6B0B3C121EDCEA6100033E8C /* Spotify Tab Finder */,
 				6B0B3C111EDCEA6100033E8C /* Products */,
+				6B0B3C2A1EDCEC1900033E8C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +95,18 @@
 		6B0B3C121EDCEA6100033E8C /* Spotify Tab Finder */ = {
 			isa = PBXGroup;
 			children = (
-				6B0B3C161EDCEA6100033E8C /* AppDelegate.h */,
-				6B0B3C171EDCEA6100033E8C /* AppDelegate.m */,
-				6B0B3C191EDCEA6100033E8C /* ViewController.h */,
-				6B0B3C1A1EDCEA6100033E8C /* ViewController.m */,
+				6B0B3C161EDCEA6100033E8C /* JWCAppDelegate.h */,
+				6B0B3C171EDCEA6100033E8C /* JWCAppDelegate.m */,
+				6B0B3C191EDCEA6100033E8C /* JWCPlaylistViewController.h */,
+				6B0B3C1A1EDCEA6100033E8C /* JWCPlaylistViewController.m */,
+				6B9324561F50FC0300B7BDC7 /* JWCSongsViewController.h */,
+				6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */,
+				6B0B3C331EDCF7DB00033E8C /* JWCSongListViewController.h */,
+				6B0B3C341EDCF7DB00033E8C /* JWCSongListViewController.m */,
+				6B1C59DE1EDE972100A5D90C /* JWCTabLinkListViewController.h */,
+				6B1C59DF1EDE972100A5D90C /* JWCTabLinkListViewController.m */,
+				6B9324591F50FF0200B7BDC7 /* Auth */,
+				6B32E8DF1EDDF708005AD485 /* Hpple */,
 				6B0B3C1C1EDCEA6100033E8C /* Main.storyboard */,
 				6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */,
 				6B0B3C211EDCEA6100033E8C /* LaunchScreen.storyboard */,
@@ -77,6 +122,40 @@
 				6B0B3C141EDCEA6100033E8C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B0B3C2A1EDCEC1900033E8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B32E8E91EDDF73F005AD485 /* libxml2.tbd */,
+				6B0B3C2D1EDCEC9700033E8C /* SpotifyAudioPlayback.framework */,
+				6B0B3C2E1EDCEC9700033E8C /* SpotifyAuthentication.framework */,
+				6B0B3C2F1EDCEC9700033E8C /* SpotifyMetadata.framework */,
+				6B0B3C2B1EDCEC1900033E8C /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B32E8DF1EDDF708005AD485 /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				6B32E8E01EDDF708005AD485 /* TFHpple.h */,
+				6B32E8E11EDDF708005AD485 /* TFHpple.m */,
+				6B32E8E21EDDF708005AD485 /* TFHppleElement.h */,
+				6B32E8E31EDDF708005AD485 /* TFHppleElement.m */,
+				6B32E8E41EDDF708005AD485 /* XPathQuery.h */,
+				6B32E8E51EDDF708005AD485 /* XPathQuery.m */,
+			);
+			path = Hpple;
+			sourceTree = "<group>";
+		};
+		6B9324591F50FF0200B7BDC7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				6B93245A1F50FF1A00B7BDC7 /* JWCAuthManager.h */,
+				6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +230,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0B3C1B1EDCEA6100033E8C /* ViewController.m in Sources */,
-				6B0B3C181EDCEA6100033E8C /* AppDelegate.m in Sources */,
+				6B32E8E81EDDF708005AD485 /* XPathQuery.m in Sources */,
+				6B0B3C1B1EDCEA6100033E8C /* JWCPlaylistViewController.m in Sources */,
+				6B93245C1F50FF1A00B7BDC7 /* JWCAuthManager.m in Sources */,
+				6B0B3C181EDCEA6100033E8C /* JWCAppDelegate.m in Sources */,
 				6B0B3C151EDCEA6100033E8C /* main.m in Sources */,
+				6B32E8E71EDDF708005AD485 /* TFHppleElement.m in Sources */,
+				6B1C59E01EDE972100A5D90C /* JWCTabLinkListViewController.m in Sources */,
+				6B0B3C351EDCF7DB00033E8C /* JWCSongListViewController.m in Sources */,
+				6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */,
+				6B32E8E61EDDF708005AD485 /* TFHpple.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,10 +360,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KAXBL5N6GV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "Spotify Tab Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JeffWritesCode.Spotify-Tab-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -286,10 +382,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KAXBL5N6GV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "Spotify Tab Finder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JeffWritesCode.Spotify-Tab-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -312,6 +418,7 @@
 				6B0B3C291EDCEA6100033E8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
