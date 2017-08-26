@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static const * NSString *serverURL = @"https://polar-reef-19318.herokuapp.com";
+
 @interface JWCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
