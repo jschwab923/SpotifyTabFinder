@@ -11,6 +11,8 @@
 #import "JWCSongListViewController.h"
 #import "JWCTabLinkListViewController.h"
 
+#import "UIColor+JWCColors.h"
+
 @interface JWCSongListViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *songTableView;
@@ -29,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.songTableView.backgroundColor = [UIColor gunMetal];
+    self.songTableView.separatorColor = [UIColor grayBlue];
+    
     for (SPTPartialTrack *track in self.currentPage.items) {
         if ([[self.tabLinks objectForKey:track.name] count]) {
             self.selectedTabLinks = [self.tabLinks objectForKey:track.name];
@@ -131,6 +136,10 @@
     if (tabLinks.count) {
         tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
     }
+    
+    cell.backgroundColor = tableView.backgroundColor;
+    
+    cell.textLabel.textColor = [UIColor tealBlue];
     cell.textLabel.text = [NSString stringWithFormat:@"%@%@", track.name, tabsAvailable ?: @""];
     
     return cell;

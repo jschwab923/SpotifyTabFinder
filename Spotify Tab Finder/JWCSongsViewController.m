@@ -17,6 +17,8 @@
 
 #import "JWCTabLinkListViewController.h"
 
+#import "UIColor+JWCColors.h"
+
 @interface JWCSongsViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *songsTableView;
@@ -35,8 +37,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     self.auth = [JWCAuthManager sharedAuthManager].auth;
     [self loadSongs];
+    
+    self.songsTableView.backgroundColor = [UIColor gunMetal];
+    self.songsTableView.separatorColor = [UIColor grayBlue];
 }
 
 - (void)loadSongs
@@ -85,6 +91,10 @@
     if (tabLinks.count) {
         tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
     }
+    
+    cell.backgroundColor = tableView.backgroundColor;
+    
+    cell.textLabel.textColor = [UIColor tealBlue];
     cell.textLabel.text = [NSString stringWithFormat:@"%@%@", track.name, tabsAvailable ?: @""];
     
     return cell;

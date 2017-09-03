@@ -7,6 +7,7 @@
 //
 
 #import "JWCAppDelegate.h"
+#import "UIColor+JWCColors.h"
 
 @interface JWCAppDelegate ()
 
@@ -15,6 +16,15 @@
 @end
 
 @implementation JWCAppDelegate
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[UITabBar appearance] setTintColor:[UIColor eerieBlack]];
+    [[UITabBar appearance] setBarTintColor:[UIColor tealBlue]];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor eerieBlack]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor tealBlue]];
+}
 
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url

@@ -13,6 +13,8 @@
 
 #import "JWCAuthManager.h"
 
+#import "UIColor+JWCColors.h"
+
 @interface JWCPlaylistViewController () <UIScrollViewDelegate, JWCAuthDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *playlistsTableView;
@@ -29,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.playlistsTableView.backgroundColor = [UIColor gunMetal];
+    self.playlistsTableView.separatorColor = [UIColor grayBlue];
     
     [self getListOfPlaylists];
     
@@ -97,6 +102,9 @@
     NSArray *items =  self.playlists.items;
     SPTPartialPlaylist *playlist = [items objectAtIndex:indexPath.row];
     
+    cell.backgroundColor = tableView.backgroundColor;
+    
+    cell.textLabel.textColor = [UIColor tealBlue];
     cell.textLabel.text = [NSString stringWithFormat:@"%@\nTrack Count:%lu", playlist.name, (unsigned long)playlist.trackCount];
     
     return cell;

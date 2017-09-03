@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Playlist View Controller-->
+        <!--Playlists-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="JWCPlaylistViewController" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                             <constraint firstItem="Z97-OW-SWt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="y6W-cP-Ft3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PzL-rN-ccQ"/>
+                    <navigationItem key="navigationItem" title="Playlists" id="PzL-rN-ccQ"/>
                     <connections>
                         <outlet property="playlistsTableView" destination="Z97-OW-SWt" id="NZC-2d-gBi"/>
                         <segue destination="s91-Im-FXM" kind="show" identifier="SongListSegue" id="q1K-8I-fdJ"/>
@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="1068" y="138.98050974512745"/>
         </scene>
-        <!--Song List View Controller-->
+        <!--Songs-->
         <scene sceneID="fh5-Yu-u2S">
             <objects>
                 <viewController id="s91-Im-FXM" customClass="JWCSongListViewController" sceneMemberID="viewController">
@@ -97,6 +97,7 @@
                             <constraint firstItem="EeV-69-IG4" firstAttribute="width" secondItem="3rY-gT-Xh9" secondAttribute="width" id="xyZ-kR-4X6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Songs" id="3eC-6z-LOv"/>
                     <connections>
                         <outlet property="songTableView" destination="EeV-69-IG4" id="lNN-6z-lP2"/>
                         <segue destination="Zda-aT-qwB" kind="show" identifier="TabLinkSegue" id="UAs-BC-rmS"/>
@@ -106,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="2028" y="139"/>
         </scene>
-        <!--Tab Link List View Controller-->
+        <!--Tab Links-->
         <scene sceneID="Are-Ct-kzN">
             <objects>
                 <viewController id="Zda-aT-qwB" customClass="JWCTabLinkListViewController" sceneMemberID="viewController">
@@ -145,6 +146,10 @@
                             <constraint firstItem="S4N-dQ-DZA" firstAttribute="width" secondItem="CYM-gN-gxp" secondAttribute="width" id="xzf-Jj-uFB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Tab Links" id="qhn-oK-YEE"/>
+                    <connections>
+                        <outlet property="tabLinksTableView" destination="S4N-dQ-DZA" id="2Jc-Vk-fTe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XM2-1B-tJK" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,7 +209,7 @@
             </objects>
             <point key="canvasLocation" x="158" y="877"/>
         </scene>
-        <!--Songs View Controller-->
+        <!--Songs-->
         <scene sceneID="nOO-ue-1Jh">
             <objects>
                 <viewController id="G2M-et-qqy" customClass="JWCSongsViewController" sceneMemberID="viewController">
@@ -243,7 +248,7 @@
                             <constraint firstItem="caZ-UE-BtB" firstAttribute="centerY" secondItem="yic-Bm-gUf" secondAttribute="centerY" id="i6V-9W-sGk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SFE-Ec-w7D"/>
+                    <navigationItem key="navigationItem" title="Songs" id="SFE-Ec-w7D"/>
                     <connections>
                         <outlet property="songsTableView" destination="caZ-UE-BtB" id="5c4-4v-mHQ"/>
                         <segue destination="Zda-aT-qwB" kind="show" identifier="TabLinkSegue" id="cp4-9R-uXA"/>
@@ -255,6 +260,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cp4-9R-uXA"/>
+        <segue reference="UAs-BC-rmS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -23,6 +23,7 @@
 		6B32E8E71EDDF708005AD485 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32E8E31EDDF708005AD485 /* TFHppleElement.m */; };
 		6B32E8E81EDDF708005AD485 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32E8E51EDDF708005AD485 /* XPathQuery.m */; };
 		6B32E8EA1EDDF73F005AD485 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B32E8E91EDDF73F005AD485 /* libxml2.tbd */; };
+		6B63097A1F5CA7D90045EA6C /* UIColor+JWCColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6309791F5CA7D90045EA6C /* UIColor+JWCColors.m */; };
 		6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */; };
 		6B93245C1F50FF1A00B7BDC7 /* JWCAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,8 @@
 		6B32E8E41EDDF708005AD485 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		6B32E8E51EDDF708005AD485 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		6B32E8E91EDDF73F005AD485 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		6B6309781F5CA7D90045EA6C /* UIColor+JWCColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JWCColors.h"; sourceTree = "<group>"; };
+		6B6309791F5CA7D90045EA6C /* UIColor+JWCColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JWCColors.m"; sourceTree = "<group>"; };
 		6B9324561F50FC0300B7BDC7 /* JWCSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCSongsViewController.h; sourceTree = "<group>"; };
 		6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCSongsViewController.m; sourceTree = "<group>"; };
 		6B93245A1F50FF1A00B7BDC7 /* JWCAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCAuthManager.h; sourceTree = "<group>"; };
@@ -105,11 +108,13 @@
 				6B0B3C341EDCF7DB00033E8C /* JWCSongListViewController.m */,
 				6B1C59DE1EDE972100A5D90C /* JWCTabLinkListViewController.h */,
 				6B1C59DF1EDE972100A5D90C /* JWCTabLinkListViewController.m */,
+				6B6309781F5CA7D90045EA6C /* UIColor+JWCColors.h */,
+				6B6309791F5CA7D90045EA6C /* UIColor+JWCColors.m */,
 				6B9324591F50FF0200B7BDC7 /* Auth */,
 				6B32E8DF1EDDF708005AD485 /* Hpple */,
 				6B0B3C1C1EDCEA6100033E8C /* Main.storyboard */,
-				6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */,
 				6B0B3C211EDCEA6100033E8C /* LaunchScreen.storyboard */,
+				6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */,
 				6B0B3C241EDCEA6100033E8C /* Info.plist */,
 				6B0B3C131EDCEA6100033E8C /* Supporting Files */,
 			);
@@ -240,6 +245,7 @@
 				6B0B3C351EDCF7DB00033E8C /* JWCSongListViewController.m in Sources */,
 				6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */,
 				6B32E8E61EDDF708005AD485 /* TFHpple.m in Sources */,
+				6B63097A1F5CA7D90045EA6C /* UIColor+JWCColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

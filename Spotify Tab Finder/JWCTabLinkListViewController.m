@@ -8,11 +8,21 @@
 
 #import "JWCTabLinkListViewController.h"
 
+#import "UIColor+JWCColors.h"
+
 @interface JWCTabLinkListViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tabLinksTableView;
 
 @end
 
 @implementation JWCTabLinkListViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tabLinksTableView.backgroundColor = [UIColor gunMetal];
+    self.tabLinksTableView.separatorColor = [UIColor grayBlue];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -30,6 +40,9 @@
     static NSString *cellIdentifier = @"TabLinkCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
+    cell.backgroundColor = tableView.backgroundColor;
+    
+    cell.textLabel.textColor = [UIColor tealBlue];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.tablinks[indexPath.row]];
     
     return cell;
