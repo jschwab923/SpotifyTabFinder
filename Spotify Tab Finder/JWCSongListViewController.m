@@ -69,7 +69,10 @@
                 if (data) {
                     TFHpple *hpple = [TFHpple hppleWithHTMLData:data];
                     
-                    NSString *tabSearchXpathQueryString = @"//div[@class='content']/table/tr/td[@class='sres']/table[@class='tresults  ']/tr/td/div[a]";
+                    NSString *tabSearchXpathQueryString = [[NSUserDefaults standardUserDefaults] objectForKey:@"xpath"];
+                    if (!tabSearchXpathQueryString) {
+                        tabSearchXpathQueryString = @"//div[@class='content']/table/tr/td[@class='sres']/table[@class='tresults  ']/tr/td/div[a]";
+                    }
                     NSArray *searchResultNodes = [hpple searchWithXPathQuery:tabSearchXpathQueryString];
                     
                     NSMutableArray *searchResults = [[NSMutableArray alloc] initWithCapacity:0];
@@ -83,7 +86,6 @@
                     dispatch_async(dispatch_get_main_queue(), ^(void) {
                         [self.songTableView reloadData];
                     });
-
                 }
             });
         }];

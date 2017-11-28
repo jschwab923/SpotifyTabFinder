@@ -19,7 +19,7 @@
 
 #import "UIColor+JWCColors.h"
 
-@interface JWCSongsViewController ()
+@interface JWCSongsViewController () <UISearchBarDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *songsTableView;
 
@@ -29,6 +29,10 @@
 
 @property (nonatomic, strong) NSMutableDictionary *tabLinks;
 @property (nonatomic, strong) NSArray *selectedTabLinks;
+
+@property (nonatomic, strong) NSArray *items;
+
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -51,6 +55,7 @@
        
         if ([object isKindOfClass:[SPTListPage class]]) {
             self.currentPage = (SPTListPage *)object;
+            self.items = self.currentPage.items;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
@@ -77,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.currentPage.items.count;
+    return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,7 +90,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    SPTPartialTrack *track = self.currentPage.items[indexPath.row];
+    SPTPartialTrack *track = self.items[indexPath.row];
     NSArray *tabLinks = [self.tabLinks objectForKey:track.name];
     NSString *tabsAvailable;
     if (tabLinks.count) {
@@ -139,6 +144,16 @@
     }
 }
 
+- (void)setCurrentPage:(SPTListPage *)currentPage
+{
+    _currentPage = currentPage;
+    if (currentPage && self.searchBar.text.length) {
+        self.items = [currentPage.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name CONTAINS %@", self.searchBar.text]];
+    } else {
+        self.items = currentPage.items;
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"TabLinkSegue"]) {
@@ -164,7 +179,26 @@
                 if (data) {
                     TFHpple *hpple = [TFHpple hppleWithHTMLData:data];
                     
-                    NSString *tabSearchXpathQueryString = @"//div[@class='content']/table/tr/td[@class='sres']/table[@class='tresults  ']/tr/td/div[a]";
+                    
+                    NSString *tabSearchXpathQueryString = [[NSUserDefaults standardUserDefaults] objectForKey:@"xpath"];
+                    if (!tabSearchXpathQueryString) {
+                        
+                        NSString *tabSearchXpathQueryString = [[NSUserDefaults standardUserDefaults] objectForKey:@"xpath"];
+                        if (!tabSearchXpathQueryString) {
+                            
+                            tabSearchXpathQueryString = @"//div[@class='content']/table/tr/td[@class='sres']/table[@class='tresults  ']/tr/td/div[a]";
+                        }
+                        
+                        NSNotificationCenter * __weak center = [NSNotificationCenter defaultCenter];
+                        id __block token = [center addObserverForName:@"xpathUpdated" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+                            
+                            [center removeObserver:token];
+                            
+                            [self searchForTabsForTrack:track];
+                            
+                        }];
+                    }
+                    
                     NSArray *searchResultNodes = [hpple searchWithXPathQuery:tabSearchXpathQueryString];
                     
                     NSMutableArray *searchResults = [[NSMutableArray alloc] initWithCapacity:0];
@@ -185,6 +219,30 @@
         
         [urlSession resume];
     }
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar
+    textDidChange:(NSString *)searchText
+{
+    if ([searchText isEqualToString:@""]) {
+        self.items = self.currentPage.items;
+    } else {
+        self.items = [self.currentPage.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name BEGINSWITH %@", searchText]];
+    }
+    [self.songsTableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.items = self.currentPage.items;
+    [self.songsTableView reloadData];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 @end

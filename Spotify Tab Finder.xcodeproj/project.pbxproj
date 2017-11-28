@@ -26,9 +26,12 @@
 		6B63097A1F5CA7D90045EA6C /* UIColor+JWCColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6309791F5CA7D90045EA6C /* UIColor+JWCColors.m */; };
 		6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */; };
 		6B93245C1F50FF1A00B7BDC7 /* JWCAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */; };
+		6BAB3C091FCCC9F000EFD3EB /* JWCNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB3C081FCCC9F000EFD3EB /* JWCNetworkController.m */; };
+		CEBED10756906D6A25DD5C6D /* Pods_Spotify_Tab_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A77B0A80B3222EAD2DE307 /* Pods_Spotify_Tab_Finder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161ED6A3B30A343564249620 /* Pods-Spotify Tab Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify Tab Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder.release.xcconfig"; sourceTree = "<group>"; };
 		6B0B3C101EDCEA6100033E8C /* Spotify Tab Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotify Tab Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0B3C141EDCEA6100033E8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B0B3C161EDCEA6100033E8C /* JWCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCAppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +63,10 @@
 		6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCSongsViewController.m; sourceTree = "<group>"; };
 		6B93245A1F50FF1A00B7BDC7 /* JWCAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCAuthManager.h; sourceTree = "<group>"; };
 		6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCAuthManager.m; sourceTree = "<group>"; };
+		6BAB3C071FCCC9F000EFD3EB /* JWCNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCNetworkController.h; sourceTree = "<group>"; };
+		6BAB3C081FCCC9F000EFD3EB /* JWCNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCNetworkController.m; sourceTree = "<group>"; };
+		E3A77B0A80B3222EAD2DE307 /* Pods_Spotify_Tab_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify_Tab_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6F28C0CCA98C23403AFCF41 /* Pods-Spotify Tab Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify Tab Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +79,29 @@
 				6B0B3C2C1EDCEC1900033E8C /* SystemConfiguration.framework in Frameworks */,
 				6B0B3C311EDCEC9700033E8C /* SpotifyAuthentication.framework in Frameworks */,
 				6B0B3C301EDCEC9700033E8C /* SpotifyAudioPlayback.framework in Frameworks */,
+				CEBED10756906D6A25DD5C6D /* Pods_Spotify_Tab_Finder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ACED898D5BE64FDDB5E146D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6F28C0CCA98C23403AFCF41 /* Pods-Spotify Tab Finder.debug.xcconfig */,
+				161ED6A3B30A343564249620 /* Pods-Spotify Tab Finder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6B0B3C071EDCEA6000033E8C = {
 			isa = PBXGroup;
 			children = (
 				6B0B3C121EDCEA6100033E8C /* Spotify Tab Finder */,
 				6B0B3C111EDCEA6100033E8C /* Products */,
 				6B0B3C2A1EDCEC1900033E8C /* Frameworks */,
+				0ACED898D5BE64FDDB5E146D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +118,8 @@
 			children = (
 				6B0B3C161EDCEA6100033E8C /* JWCAppDelegate.h */,
 				6B0B3C171EDCEA6100033E8C /* JWCAppDelegate.m */,
+				6BAB3C071FCCC9F000EFD3EB /* JWCNetworkController.h */,
+				6BAB3C081FCCC9F000EFD3EB /* JWCNetworkController.m */,
 				6B0B3C191EDCEA6100033E8C /* JWCPlaylistViewController.h */,
 				6B0B3C1A1EDCEA6100033E8C /* JWCPlaylistViewController.m */,
 				6B9324561F50FC0300B7BDC7 /* JWCSongsViewController.h */,
@@ -137,6 +157,7 @@
 				6B0B3C2E1EDCEC9700033E8C /* SpotifyAuthentication.framework */,
 				6B0B3C2F1EDCEC9700033E8C /* SpotifyMetadata.framework */,
 				6B0B3C2B1EDCEC1900033E8C /* SystemConfiguration.framework */,
+				E3A77B0A80B3222EAD2DE307 /* Pods_Spotify_Tab_Finder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,9 +191,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B0B3C271EDCEA6100033E8C /* Build configuration list for PBXNativeTarget "Spotify Tab Finder" */;
 			buildPhases = (
+				DF5D022318D373DA15EF620A /* [CP] Check Pods Manifest.lock */,
 				6B0B3C0C1EDCEA6000033E8C /* Sources */,
 				6B0B3C0D1EDCEA6000033E8C /* Frameworks */,
 				6B0B3C0E1EDCEA6000033E8C /* Resources */,
+				D49F3CDDAC072352B37C67CA /* [CP] Embed Pods Frameworks */,
+				E2FD44517167123567BC3BD3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +254,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D49F3CDDAC072352B37C67CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF5D022318D373DA15EF620A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spotify Tab Finder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2FD44517167123567BC3BD3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6B0B3C0C1EDCEA6000033E8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -246,6 +326,7 @@
 				6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */,
 				6B32E8E61EDDF708005AD485 /* TFHpple.m in Sources */,
 				6B63097A1F5CA7D90045EA6C /* UIColor+JWCColors.m in Sources */,
+				6BAB3C091FCCC9F000EFD3EB /* JWCNetworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +444,7 @@
 		};
 		6B0B3C281EDCEA6100033E8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6F28C0CCA98C23403AFCF41 /* Pods-Spotify Tab Finder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KAXBL5N6GV;
@@ -385,6 +467,7 @@
 		};
 		6B0B3C291EDCEA6100033E8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161ED6A3B30A343564249620 /* Pods-Spotify Tab Finder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KAXBL5N6GV;

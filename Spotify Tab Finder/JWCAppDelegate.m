@@ -7,6 +7,9 @@
 //
 
 #import "JWCAppDelegate.h"
+
+#import "JWCNetworkController.h"
+
 #import "UIColor+JWCColors.h"
 
 @interface JWCAppDelegate ()
@@ -24,6 +27,8 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor eerieBlack]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor tealBlue]];
+    
+    [[JWCNetworkController sharedController] getXPath];
 }
 
 - (BOOL)application:(UIApplication *)app
