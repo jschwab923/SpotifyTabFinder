@@ -37,6 +37,9 @@
 
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
+@property (nonatomic, strong) NSOperationQueue *tabSearchQueue;
+@property (nonatomic, strong) NSMutableDictionary *inflightOperations;
+
 @end
 
 @implementation JWCSongsViewController
@@ -52,6 +55,9 @@
     
     self.songsTableView.backgroundColor = [UIColor blackColor];
     self.songsTableView.separatorColor = [UIColor grayBlue];
+    
+    self.tabSearchQueue = [NSOperationQueue new];
+    self.inflightOperations = [NSMutableDictionary new];
 }
 
 - (void)loadSongs
@@ -102,7 +108,13 @@
     NSArray *tabLinks = [self.tabLinks objectForKey:track.name];
     NSString *tabsAvailable;
     if (tabLinks.count) {
-        tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
+        tabsAvailable = [NSString stringWithFormat:@" | Tab Count:%lu", (unsigned long)tabLinks.count];
+    } else if (!self.inflightOperations[track.name]) {
+        NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+            [self searchForTabsForTrack:track];
+        }];
+        self.inflightOperations[track.name] = operation;
+        [self.tabSearchQueue addOperation:operation];
     }
     
     cell.cellLabel.text = [NSString stringWithFormat:@"  %@%@", track.name, tabsAvailable ?: @""];
@@ -176,11 +188,16 @@
         
         NSMutableURLRequest *ultimateGuitarRequest = [[NSMutableURLRequest alloc] initWithURL:ultimateGuitarURL];
         
-        [ultimateGuitarRequest setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A" forHTTPHeaderField:@"User-Agent"];
+        [ultimateGuitarRequest setValue:@"" forHTTPHeaderField:@"User-Agent"];
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
         NSURLSessionDataTask *urlSession = [[NSURLSession sharedSession] dataTaskWithRequest:ultimateGuitarRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^(void) {
+                
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                
                 if (data) {
                     TFHpple *hpple = [TFHpple hppleWithHTMLData:data];
                     

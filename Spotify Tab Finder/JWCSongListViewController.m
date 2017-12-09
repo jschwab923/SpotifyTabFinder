@@ -33,6 +33,9 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (nonatomic, strong) NSOperationQueue *tabSearchQueue;
+@property (nonatomic, strong) NSMutableDictionary *inflightOperations;
+
 @end
 
 @implementation JWCSongListViewController
@@ -46,14 +49,8 @@
     self.songTableView.backgroundColor = [UIColor blackColor];
     self.songTableView.separatorColor = [UIColor grayBlue];
     
-    for (SPTPartialTrack *track in self.currentPage.items) {
-        if ([[self.tabLinks objectForKey:track.name] count]) {
-            self.selectedTabLinks = [self.tabLinks objectForKey:track.name];
-            [self performSegueWithIdentifier:@"TabLinkSegue" sender:self];
-        } else {
-            [self searchForTabsForTrack:track];
-        }
-    }
+    self.tabSearchQueue = [NSOperationQueue new];
+    self.inflightOperations = [NSMutableDictionary new];
 }
 
 - (NSDictionary *)tabLinks
@@ -100,8 +97,13 @@
                     NSMutableArray *searchResults = [[NSMutableArray alloc] initWithCapacity:0];
                     for (TFHppleElement *element in searchResultNodes) {
                         TFHppleElement *link = [element firstChildWithTagName:@"a"];
-                        NSString *linkURLString = [link objectForKey:@"href"];
-                        [searchResults addObject:linkURLString];
+                        NSDictionary *nodeAttributes = link.attributes;
+                        if (nodeAttributes.count) {
+                            NSString *linkURLString = nodeAttributes[@"href"];
+                            if (linkURLString) {
+                                [searchResults addObject:linkURLString];
+                            }
+                        }
                     }
                     [self.tabLinks setValue:searchResults forKey:track.name];
                     
@@ -163,6 +165,12 @@
     NSString *tabsAvailable;
     if (tabLinks.count) {
         tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
+    } else if (!self.inflightOperations[track.name]) {
+        NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+            [self searchForTabsForTrack:track];
+        }];
+        self.inflightOperations[track.name] = operation;
+        [self.tabSearchQueue addOperation:operation];
     }
     
     cell.cellLabel.text = [NSString stringWithFormat:@"  %@%@", track.name, tabsAvailable ?: @""];
@@ -216,6 +224,7 @@
 {
     if ([segue.identifier isEqualToString:@"TabLinkSegue"]) {
         JWCTabLinkListViewController *tabViewController = segue.destinationViewController;
+        tabViewController.tablinks = self.selectedTabLinks;
         tabViewController.selectedTrack = self.selectedTrack;
     }
 }

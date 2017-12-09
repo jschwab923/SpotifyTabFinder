@@ -62,7 +62,12 @@
     static NSString *cellIdentifier = @"TitleCell";
     JWCTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.cellLabel.backgroundColor = tableView.backgroundColor;
-    cell.cellLabel.text = [NSString stringWithFormat:@"  %@", self.tablinks[indexPath.row]];
+    
+    NSString *tabName = [self.tablinks[indexPath.row] lastPathComponent];
+    NSMutableArray *splitTabName = [[tabName componentsSeparatedByString:@"_"] mutableCopy];
+    [splitTabName removeLastObject];
+    
+    cell.cellLabel.text = [NSString stringWithFormat:@"  %@ - %@", [[splitTabName componentsJoinedByString:@" "] capitalizedString], self.tablinks[indexPath.row]];
     return cell;
 }
 
