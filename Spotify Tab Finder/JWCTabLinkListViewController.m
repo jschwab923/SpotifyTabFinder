@@ -8,10 +8,17 @@
 
 #import "JWCTabLinkListViewController.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <FaceAware/FaceAware-Swift.h>
+
+#import "JWCTitleTableViewCell.h"
+
 #import "UIColor+JWCColors.h"
 
-@interface JWCTabLinkListViewController ()
+@interface JWCTabLinkListViewController () <UITableViewDelegate, UITableViewDataSource>
+
 @property (strong, nonatomic) IBOutlet UITableView *tabLinksTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @end
 
@@ -20,8 +27,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabLinksTableView.backgroundColor = [UIColor gunMetal];
+    
+    [self.headerImageView sd_setImageWithURL:self.selectedTrack.album.largestCover.imageURL completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            self.headerImageView.debugFaceAware = YES;
+            self.headerImageView.focusOnFaces = YES;
+        });
+        
+    }];
+    
+    [self.tabLinksTableView registerNib:[UINib nibWithNibName:@"JWCTitleTableViewCell" bundle:nil] forCellReuseIdentifier:@"TitleCell"];
+
+    self.tabLinksTableView.backgroundColor = [UIColor blackColor];
     self.tabLinksTableView.separatorColor = [UIColor grayBlue];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ Tabs", self.selectedTrack.name];
 }
 
 #pragma mark - UITableViewDataSource
@@ -36,15 +57,12 @@
     return self.tablinks.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"TabLinkCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    cell.backgroundColor = tableView.backgroundColor;
-    
-    cell.textLabel.textColor = [UIColor tealBlue];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.tablinks[indexPath.row]];
-    
+- (JWCTitleTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"TitleCell";
+    JWCTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.cellLabel.backgroundColor = tableView.backgroundColor;
+    cell.cellLabel.text = [NSString stringWithFormat:@"  %@", self.tablinks[indexPath.row]];
     return cell;
 }
 

@@ -22,11 +22,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[UITabBar appearance] setTintColor:[UIColor eerieBlack]];
-    [[UITabBar appearance] setBarTintColor:[UIColor tealBlue]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor eerieBlack]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor tealBlue]];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithWhite:0 alpha:0.6]];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithWhite:0 alpha:0.6]];
     
     [[JWCNetworkController sharedController] getXPath];
 }

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SpotifyMetadata/SpotifyMetadata.h>
+
 
 @interface JWCTabLinkListViewController : UIViewController
 
+@property (nonatomic, strong) SPTPartialTrack *selectedTrack;
 @property (nonatomic, strong) NSArray *tablinks;
 
 @end

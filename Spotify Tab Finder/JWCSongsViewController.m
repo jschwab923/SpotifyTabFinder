@@ -9,17 +9,19 @@
 #import "JWCSongsViewController.h"
 
 #import <SpotifyMetadata/SpotifyMetadata.h>
-#import <SpotifyAudioPlayback/SpotifyAudioPlayback.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "TFHpple.h"
 
 #import "JWCAuthManager.h"
 
+#import "JWCTitleTableViewCell.h"
+
 #import "JWCTabLinkListViewController.h"
 
 #import "UIColor+JWCColors.h"
 
-@interface JWCSongsViewController () <UISearchBarDelegate, UITextViewDelegate>
+@interface JWCSongsViewController () <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *songsTableView;
 
@@ -29,6 +31,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *tabLinks;
 @property (nonatomic, strong) NSArray *selectedTabLinks;
+@property (nonatomic, strong) SPTPartialTrack *selectedTrack;
 
 @property (nonatomic, strong) NSArray *items;
 
@@ -42,10 +45,12 @@
 {
     [super viewDidAppear:animated];
     
+    [self.songsTableView registerNib:[UINib nibWithNibName:@"JWCTitleTableViewCell" bundle:nil] forCellReuseIdentifier:@"TitleCell"];
+    
     self.auth = [JWCAuthManager sharedAuthManager].auth;
     [self loadSongs];
     
-    self.songsTableView.backgroundColor = [UIColor gunMetal];
+    self.songsTableView.backgroundColor = [UIColor blackColor];
     self.songsTableView.separatorColor = [UIColor grayBlue];
 }
 
@@ -85,22 +90,22 @@
     return self.items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"SongCell";
+- (JWCTitleTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"TitleCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    JWCTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = tableView.backgroundColor;
     
     SPTPartialTrack *track = self.items[indexPath.row];
+    [cell.cellImageView sd_setImageWithURL:track.album.largestCover.imageURL];
+    
     NSArray *tabLinks = [self.tabLinks objectForKey:track.name];
     NSString *tabsAvailable;
     if (tabLinks.count) {
         tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
     }
     
-    cell.backgroundColor = tableView.backgroundColor;
-    
-    cell.textLabel.textColor = [UIColor tealBlue];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@%@", track.name, tabsAvailable ?: @""];
+    cell.cellLabel.text = [NSString stringWithFormat:@"  %@%@", track.name, tabsAvailable ?: @""];
     
     return cell;
 }
@@ -109,9 +114,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPTPartialTrack *track = self.currentPage.items[indexPath.row];
+    SPTPartialTrack *track = self.items[indexPath.row];
     if ([[self.tabLinks objectForKey:track.name] count]) {
         self.selectedTabLinks = [self.tabLinks objectForKey:track.name];
+        self.selectedTrack = track;
         [self performSegueWithIdentifier:@"TabLinkSegue" sender:self];
     } else {
         [self searchForTabsForTrack:track];
@@ -130,16 +136,18 @@
         
         float reload_distance = 10;
         if (y > h + reload_distance) {
-            [self.currentPage requestNextPageWithAccessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
-                
-                if ([object isKindOfClass:[SPTListPage class]]) {
-                    self.currentPage = [self.currentPage pageByAppendingPage:object];
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    [self.songsTableView reloadData];
-                });
-            }];
+            if (self.currentPage.hasNextPage) {
+                [self.currentPage requestNextPageWithAccessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
+                    
+                    if ([object isKindOfClass:[SPTListPage class]]) {
+                        self.currentPage = [self.currentPage pageByAppendingPage:object];
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^(void) {
+                        [self.songsTableView reloadData];
+                    });
+                }];
+            }
         }
     }
 }
@@ -147,11 +155,7 @@
 - (void)setCurrentPage:(SPTListPage *)currentPage
 {
     _currentPage = currentPage;
-    if (currentPage && self.searchBar.text.length) {
-        self.items = [currentPage.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name CONTAINS %@", self.searchBar.text]];
-    } else {
-        self.items = currentPage.items;
-    }
+    self.items = currentPage.items;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -159,6 +163,7 @@
     if ([segue.identifier isEqualToString:@"TabLinkSegue"]) {
         JWCTabLinkListViewController *tabViewController = segue.destinationViewController;
         tabViewController.tablinks = self.selectedTabLinks;
+        tabViewController.selectedTrack = self.selectedTrack;
     }
 }
 
@@ -204,8 +209,13 @@
                     NSMutableArray *searchResults = [[NSMutableArray alloc] initWithCapacity:0];
                     for (TFHppleElement *element in searchResultNodes) {
                         TFHppleElement *link = [element firstChildWithTagName:@"a"];
-                        NSString *linkURLString = [link objectForKey:@"href"];
-                        [searchResults addObject:linkURLString];
+                        NSDictionary *nodeAttributes = link.attributes;
+                        if (nodeAttributes.count) {
+                            NSString *linkURLString = nodeAttributes[@"href"];
+                            if (linkURLString) {
+                                [searchResults addObject:linkURLString];
+                            }
+                        }
                     }
                     [self.tabLinks setValue:searchResults forKey:track.name];
                     
@@ -225,12 +235,14 @@
 - (void)searchBar:(UISearchBar *)searchBar
     textDidChange:(NSString *)searchText
 {
-    if ([searchText isEqualToString:@""]) {
-        self.items = self.currentPage.items;
-    } else {
-        self.items = [self.currentPage.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name BEGINSWITH %@", searchText]];
-    }
-    [self.songsTableView reloadData];
+    [SPTSearch performSearchWithQuery:searchText queryType:SPTQueryTypeTrack accessToken:self.auth.session.accessToken callback:^(NSError *error, SPTListPage *object) {
+       
+        if (!error && [object isKindOfClass: [SPTListPage class]]) {
+            self.items = object.items;
+            [self.songsTableView reloadData];
+        }
+        
+    }];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar

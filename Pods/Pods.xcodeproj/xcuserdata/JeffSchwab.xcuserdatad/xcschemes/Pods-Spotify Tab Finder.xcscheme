@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27D86755624596B34332C1B6224301E8"
+               BlueprintIdentifier = "C774C98F269B7A424AB461BE217BD8FC"
                BuildableName = "Pods_Spotify_Tab_Finder.framework"
                BlueprintName = "Pods-Spotify Tab Finder"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "27D86755624596B34332C1B6224301E8"
+            BlueprintIdentifier = "C774C98F269B7A424AB461BE217BD8FC"
             BuildableName = "Pods_Spotify_Tab_Finder.framework"
             BlueprintName = "Pods-Spotify Tab Finder"
             ReferencedContainer = "container:Pods.xcodeproj">

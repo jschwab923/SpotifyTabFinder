@@ -8,12 +8,16 @@
 
 #import "TFHpple.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 #import "JWCSongListViewController.h"
 #import "JWCTabLinkListViewController.h"
 
+#import "JWCTitleTableViewCell.h"
+
 #import "UIColor+JWCColors.h"
 
-@interface JWCSongListViewController ()
+@interface JWCSongListViewController () <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *songTableView;
 @property (strong, nonatomic) NSDictionary *tracksAndTabs;
@@ -22,7 +26,12 @@
 @property (nonatomic, strong) SPTListPage *currentPage;
 
 @property (nonatomic, strong) NSMutableDictionary *tabLinks;
+@property (nonatomic, strong) SPTPartialTrack *selectedTrack;
 @property (nonatomic, strong) NSArray *selectedTabLinks;
+
+@property (nonatomic, strong) NSArray *items;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -31,7 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.songTableView.backgroundColor = [UIColor gunMetal];
+    
+    [self.songTableView registerNib:[UINib nibWithNibName:@"JWCTitleTableViewCell" bundle:nil] forCellReuseIdentifier:@"TitleCell"];
+    
+    self.songTableView.backgroundColor = [UIColor blackColor];
     self.songTableView.separatorColor = [UIColor grayBlue];
     
     for (SPTPartialTrack *track in self.currentPage.items) {
@@ -50,6 +62,16 @@
         _tabLinks = [NSMutableDictionary new];
     }
     return _tabLinks;
+}
+
+- (void)setCurrentPage:(SPTListPage *)currentPage
+{
+    _currentPage = currentPage;
+    if (currentPage && self.searchBar.text.length) {
+        self.items = [currentPage.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name CONTAINS %@", self.searchBar.text]];
+    } else {
+        self.items = currentPage.items;
+    }
 }
 
 - (void)searchForTabsForTrack:(SPTPartialTrack *)track
@@ -124,25 +146,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.playlist.firstTrackPage.items.count;
+    return self.items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"SongCell";
+- (JWCTitleTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"TitleCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    JWCTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = tableView.backgroundColor;
     
-    SPTPartialTrack *track = self.currentPage.items[indexPath.row];
+    SPTPartialTrack *track = self.items[indexPath.row];
+    [cell.cellImageView sd_setImageWithURL:track.album.largestCover.imageURL];
+    
     NSArray *tabLinks = [self.tabLinks objectForKey:track.name];
     NSString *tabsAvailable;
     if (tabLinks.count) {
         tabsAvailable = [NSString stringWithFormat:@"| Tabs:%lu", (unsigned long)tabLinks.count];
     }
     
-    cell.backgroundColor = tableView.backgroundColor;
-    
-    cell.textLabel.textColor = [UIColor tealBlue];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@%@", track.name, tabsAvailable ?: @""];
+    cell.cellLabel.text = [NSString stringWithFormat:@"  %@%@", track.name, tabsAvailable ?: @""];
     
     return cell;
 }
@@ -151,9 +174,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPTPartialTrack *track = self.currentPage.items[indexPath.row];
+    SPTPartialTrack *track = self.items[indexPath.row];
     if ([[self.tabLinks objectForKey:track.name] count]) {
         self.selectedTabLinks = [self.tabLinks objectForKey:track.name];
+        self.selectedTrack = track;
         [self performSegueWithIdentifier:@"TabLinkSegue" sender:self];
     } else {
         [self searchForTabsForTrack:track];
@@ -172,16 +196,18 @@
         
         float reload_distance = 10;
         if (y > h + reload_distance) {
-            [self.playlist.firstTrackPage requestNextPageWithAccessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
-               
-                if ([object isKindOfClass:[SPTListPage class]]) {
-                    self.currentPage = [self.currentPage pageByAppendingPage:object];
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    [self.songTableView reloadData];
-                });
-            }];
+            if (self.currentPage.hasNextPage) {
+                [self.playlist.firstTrackPage requestNextPageWithAccessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
+                   
+                    if ([object isKindOfClass:[SPTListPage class]]) {
+                        self.currentPage = [self.currentPage pageByAppendingPage:object];
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^(void) {
+                        [self.songTableView reloadData];
+                    });
+                }];
+            }
         }
     }
 }
@@ -190,8 +216,35 @@
 {
     if ([segue.identifier isEqualToString:@"TabLinkSegue"]) {
         JWCTabLinkListViewController *tabViewController = segue.destinationViewController;
-        tabViewController.tablinks = self.selectedTabLinks;
+        tabViewController.selectedTrack = self.selectedTrack;
     }
 }
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar
+    textDidChange:(NSString *)searchText
+{
+    [SPTSearch performSearchWithQuery:searchText queryType:SPTQueryTypeTrack accessToken:self.auth.session.accessToken callback:^(NSError *error, SPTListPage *object) {
+        
+        if (!error && [object isKindOfClass: [SPTListPage class]]) {
+            self.items = object.items;
+            [self.songTableView reloadData];
+        }
+        
+    }];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.items = self.currentPage.items;
+    [self.songTableView reloadData];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
 
 @end

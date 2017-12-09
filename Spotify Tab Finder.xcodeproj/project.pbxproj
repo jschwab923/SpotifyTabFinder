@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B07C5001FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07C4FF1FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.m */; };
+		6B07C5031FDA3678000EC9F0 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B07C5041FDA3678000EC9F0 /* SDWebImage.framework */; };
+		6B07C5061FDA38CC000EC9F0 /* JWCLabelledImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B07C5051FDA38CC000EC9F0 /* JWCLabelledImageTableViewCell.xib */; };
+		6B07C5081FDA4728000EC9F0 /* JWCTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B07C5071FDA4728000EC9F0 /* JWCTitleTableViewCell.xib */; };
+		6B07C50B1FDA476E000EC9F0 /* JWCTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07C50A1FDA476E000EC9F0 /* JWCTitleTableViewCell.m */; };
 		6B0B3C151EDCEA6100033E8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C141EDCEA6100033E8C /* main.m */; };
 		6B0B3C181EDCEA6100033E8C /* JWCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C171EDCEA6100033E8C /* JWCAppDelegate.m */; };
 		6B0B3C1B1EDCEA6100033E8C /* JWCPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B3C1A1EDCEA6100033E8C /* JWCPlaylistViewController.m */; };
@@ -27,11 +32,20 @@
 		6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9324571F50FC0300B7BDC7 /* JWCSongsViewController.m */; };
 		6B93245C1F50FF1A00B7BDC7 /* JWCAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */; };
 		6BAB3C091FCCC9F000EFD3EB /* JWCNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB3C081FCCC9F000EFD3EB /* JWCNetworkController.m */; };
+		6BDD6B891FDB6C7E00D223B4 /* FaceAware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BDD6B8A1FDB6C7E00D223B4 /* FaceAware.framework */; };
 		CEBED10756906D6A25DD5C6D /* Pods_Spotify_Tab_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A77B0A80B3222EAD2DE307 /* Pods_Spotify_Tab_Finder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		161ED6A3B30A343564249620 /* Pods-Spotify Tab Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify Tab Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder.release.xcconfig"; sourceTree = "<group>"; };
+		6B07C4FE1FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCLabelledImageTableViewCell.h; sourceTree = "<group>"; };
+		6B07C4FF1FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWCLabelledImageTableViewCell.m; sourceTree = "<group>"; };
+		6B07C5021FDA3634000EC9F0 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B07C5041FDA3678000EC9F0 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B07C5051FDA38CC000EC9F0 /* JWCLabelledImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JWCLabelledImageTableViewCell.xib; sourceTree = "<group>"; };
+		6B07C5071FDA4728000EC9F0 /* JWCTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JWCTitleTableViewCell.xib; sourceTree = "<group>"; };
+		6B07C5091FDA476E000EC9F0 /* JWCTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCTitleTableViewCell.h; sourceTree = "<group>"; };
+		6B07C50A1FDA476E000EC9F0 /* JWCTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWCTitleTableViewCell.m; sourceTree = "<group>"; };
 		6B0B3C101EDCEA6100033E8C /* Spotify Tab Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotify Tab Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0B3C141EDCEA6100033E8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B0B3C161EDCEA6100033E8C /* JWCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWCAppDelegate.h; sourceTree = "<group>"; };
@@ -65,6 +79,7 @@
 		6B93245B1F50FF1A00B7BDC7 /* JWCAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCAuthManager.m; sourceTree = "<group>"; };
 		6BAB3C071FCCC9F000EFD3EB /* JWCNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCNetworkController.h; sourceTree = "<group>"; };
 		6BAB3C081FCCC9F000EFD3EB /* JWCNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCNetworkController.m; sourceTree = "<group>"; };
+		6BDD6B8A1FDB6C7E00D223B4 /* FaceAware.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FaceAware.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A77B0A80B3222EAD2DE307 /* Pods_Spotify_Tab_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify_Tab_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F28C0CCA98C23403AFCF41 /* Pods-Spotify Tab Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify Tab Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BDD6B891FDB6C7E00D223B4 /* FaceAware.framework in Frameworks */,
+				6B07C5031FDA3678000EC9F0 /* SDWebImage.framework in Frameworks */,
 				6B32E8EA1EDDF73F005AD485 /* libxml2.tbd in Frameworks */,
 				6B0B3C321EDCEC9700033E8C /* SpotifyMetadata.framework in Frameworks */,
 				6B0B3C2C1EDCEC1900033E8C /* SystemConfiguration.framework in Frameworks */,
@@ -128,11 +145,17 @@
 				6B0B3C341EDCF7DB00033E8C /* JWCSongListViewController.m */,
 				6B1C59DE1EDE972100A5D90C /* JWCTabLinkListViewController.h */,
 				6B1C59DF1EDE972100A5D90C /* JWCTabLinkListViewController.m */,
+				6B07C4FE1FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.h */,
+				6B07C4FF1FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.m */,
+				6B07C5091FDA476E000EC9F0 /* JWCTitleTableViewCell.h */,
+				6B07C50A1FDA476E000EC9F0 /* JWCTitleTableViewCell.m */,
 				6B6309781F5CA7D90045EA6C /* UIColor+JWCColors.h */,
 				6B6309791F5CA7D90045EA6C /* UIColor+JWCColors.m */,
 				6B9324591F50FF0200B7BDC7 /* Auth */,
 				6B32E8DF1EDDF708005AD485 /* Hpple */,
 				6B0B3C1C1EDCEA6100033E8C /* Main.storyboard */,
+				6B07C5051FDA38CC000EC9F0 /* JWCLabelledImageTableViewCell.xib */,
+				6B07C5071FDA4728000EC9F0 /* JWCTitleTableViewCell.xib */,
 				6B0B3C211EDCEA6100033E8C /* LaunchScreen.storyboard */,
 				6B0B3C1F1EDCEA6100033E8C /* Assets.xcassets */,
 				6B0B3C241EDCEA6100033E8C /* Info.plist */,
@@ -152,6 +175,9 @@
 		6B0B3C2A1EDCEC1900033E8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BDD6B8A1FDB6C7E00D223B4 /* FaceAware.framework */,
+				6B07C5041FDA3678000EC9F0 /* SDWebImage.framework */,
+				6B07C5021FDA3634000EC9F0 /* SDWebImage.framework */,
 				6B32E8E91EDDF73F005AD485 /* libxml2.tbd */,
 				6B0B3C2D1EDCEC9700033E8C /* SpotifyAudioPlayback.framework */,
 				6B0B3C2E1EDCEC9700033E8C /* SpotifyAuthentication.framework */,
@@ -213,7 +239,7 @@
 		6B0B3C081EDCEA6000033E8C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Jeff Writes Code";
 				TargetAttributes = {
 					6B0B3C0F1EDCEA6000033E8C = {
@@ -247,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0B3C231EDCEA6100033E8C /* LaunchScreen.storyboard in Resources */,
+				6B07C5081FDA4728000EC9F0 /* JWCTitleTableViewCell.xib in Resources */,
 				6B0B3C201EDCEA6100033E8C /* Assets.xcassets in Resources */,
 				6B0B3C1E1EDCEA6100033E8C /* Main.storyboard in Resources */,
+				6B07C5061FDA38CC000EC9F0 /* JWCLabelledImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +291,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Spotify Tab Finder/Pods-Spotify Tab Finder-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FaceAware/FaceAware.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaceAware.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,9 +356,11 @@
 				6B1C59E01EDE972100A5D90C /* JWCTabLinkListViewController.m in Sources */,
 				6B0B3C351EDCF7DB00033E8C /* JWCSongListViewController.m in Sources */,
 				6B9324581F50FC0300B7BDC7 /* JWCSongsViewController.m in Sources */,
+				6B07C50B1FDA476E000EC9F0 /* JWCTitleTableViewCell.m in Sources */,
 				6B32E8E61EDDF708005AD485 /* TFHpple.m in Sources */,
 				6B63097A1F5CA7D90045EA6C /* UIColor+JWCColors.m in Sources */,
 				6BAB3C091FCCC9F000EFD3EB /* JWCNetworkController.m in Sources */,
+				6B07C5001FDA3564000EC9F0 /* JWCLabelledImageTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +396,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -370,7 +406,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -410,7 +450,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -418,7 +460,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
